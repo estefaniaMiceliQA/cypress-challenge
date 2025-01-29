@@ -7,8 +7,8 @@ This project is an example of an e-commerce application for practicing test auto
 
 1. Clone the repository:  
    ```bash
-   git clone git@github.com:estefijmiceli89/qachallenge.git
-   cd qachallenge
+   git clone git@github.com:estefijmiceli89/cypress-challenge.git
+   cd cypress-challenge
    ```
 
 2. Install dependencies using Yarn:  
