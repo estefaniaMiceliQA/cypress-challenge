@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# qachallenge
-=======
 # Cypress Challenge
 
 ## Description  
@@ -60,4 +57,3 @@ This project is an example of an e-commerce application for practicing test auto
 - `cypress/`: Cypress test cases and configurations.  
 
 Good luck!
->>>>>>> d42cf797 (first commit)
