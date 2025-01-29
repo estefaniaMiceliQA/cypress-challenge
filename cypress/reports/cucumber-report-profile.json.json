@@ -1,0 +1,32 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Profile Page",
+    "line": 1,
+    "id": "profile-page",
+    "tags": [],
+    "uri": "profile.feature",
+    "elements": [
+      {
+        "id": "profile-page;user-views-their-profile",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "User views their profile",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I visit the profile page",
+            "result": {
+              "status": "passed",
+              "duration": 341000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

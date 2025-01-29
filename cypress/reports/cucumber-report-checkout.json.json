@@ -1,0 +1,52 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Checkout Process",
+    "line": 1,
+    "id": "checkout-process",
+    "tags": [],
+    "uri": "checkout.feature",
+    "elements": [
+      {
+        "id": "checkout-process;user-completes-the-checkout",
+        "keyword": "Scenario",
+        "line": 2,
+        "name": "User completes the checkout",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "I am on the checkout page",
+            "result": {
+              "status": "passed",
+              "duration": 771000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 4,
+            "name": "I fill in my details and submit",
+            "result": {
+              "status": "passed",
+              "duration": 698000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 5,
+            "name": "I should see a confirmation message",
+            "result": {
+              "status": "passed",
+              "duration": 7000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
