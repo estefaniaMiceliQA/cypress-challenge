@@ -5,6 +5,8 @@ This project is an example of an e-commerce application for practicing test auto
 
 Your task is to create as many test scripts as you can for each project's page using stack mentioned above (you can find complete list of app pages under Application Features section below)
 
+DO NOT PUSH DIRECTLY INTO MASTER! Create a new branch with your name as branch name and push changes there. 
+
 ## Steps to Run the Project  
 
 1. Clone the repository:  
