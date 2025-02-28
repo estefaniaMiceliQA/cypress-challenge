@@ -3,6 +3,8 @@
 ## Description  
 This project is an example of an e-commerce application for practicing test automation using Cypress, Cucumber, and JavaScript.
 
+Your task is to create as many test scripts as you can for each project's page using stack mentioned above (you can find complete list of app pages above)
+
 ## Steps to Run the Project  
 
 1. Clone the repository:  
