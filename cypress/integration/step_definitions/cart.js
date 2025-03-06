@@ -1,4 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { addToCartButton } from './common';
 import './common';
 
 const cartItems = () => cy.get('ul li');
@@ -12,7 +13,7 @@ Then('I should see a list of added products', () => {
 Given('I have added {string} to the cart', (productName) => {
     const productId = productName.match(/\d+/)[0];
     cy.visit(`/product/${productId}`);
-    cy.get('button').contains('Add to Cart').click();
+    addToCartButton().click();
 });
 
 Then('The cart should contain {string} with quantity {string}', (expectedProduct, expectedQuantity) => {

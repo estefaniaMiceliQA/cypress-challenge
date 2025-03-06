@@ -10,6 +10,7 @@ const pages = {
 export const nameInput = () => cy.get('input[type="text"]');
 export const emailInput = () => cy.get('input[type="email"]');
 export const submitButton = () => cy.get('button[type="submit"]');
+export const addToCartButton = () => cy.get('button').contains('Add to Cart');
 
 Given('I visit the {string} page', (page) => {
     cy.visit(pages[page] || '/');

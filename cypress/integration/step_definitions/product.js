@@ -1,4 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import { addToCartButton } from './common';
 import './common';
 
 Given('I visit a product page with ID {string}', (productId) => {
@@ -14,7 +15,7 @@ Then('I should see the "Add to Cart" button', () => {
 });
 
 When('I click the "Add to Cart" button', () => {
-    cy.get('button').contains('Add to Cart').click();
+    addToCartButton().click();
 });
 
 Then('I should be redirected to the cart page', () => {
