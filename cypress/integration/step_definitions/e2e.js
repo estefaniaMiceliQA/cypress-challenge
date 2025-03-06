@@ -1,7 +1,7 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 import './cart';
 import './checkout';
-import { addToCartButton } from './common';
+import { addToCartButton, proceedToCheckoutButton } from './common';
 
 When('I click on the first product', () => {
   cy.get('ul li a').first().click();
@@ -25,7 +25,7 @@ Then('I should see the added product in the cart', () => {
 });
 
 When('I proceed to checkout', () => {
-  cy.get('a').contains('Proceed to Checkout').click();
+    proceedToCheckoutButton().click();
 });
 
 Then('I should be on the checkout page', () => {

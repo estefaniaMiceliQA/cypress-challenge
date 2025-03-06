@@ -1,9 +1,8 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import { addToCartButton } from './common';
+import { addToCartButton, proceedToCheckoutButton } from './common';
 import './common';
 
 const cartItems = () => cy.get('ul li');
-const proceedToCheckoutButton = () => cy.get('a').contains('Proceed to Checkout');
 
 Then('I should see a list of added products', () => {
     cy.get('ul').should('exist');
