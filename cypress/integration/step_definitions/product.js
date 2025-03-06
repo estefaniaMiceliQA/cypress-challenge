@@ -5,8 +5,8 @@ Given('I visit a product page with ID {string}', (productId) => {
     cy.visit(`/product/${productId}`);
 });
 
-Then('I should see the product description', () => {
-    cy.get('p').should('exist');
+Then('I should see the product description for {string}', (productTitle) => {
+    cy.get('p').should('contain', `Details about ${productTitle}`);
 });
 
 Then('I should see the "Add to Cart" button', () => {

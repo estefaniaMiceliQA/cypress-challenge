@@ -1,10 +1,16 @@
 Feature: Product Page
 
-  Scenario: User views a product page
-    Given I visit a product page with ID "1"
-    Then I should see the header "Product 1"
-    And I should see the product description
+Scenario Outline: User views a product page
+    Given I visit a product page with ID "<product_id>"
+    Then I should see the header "<product_title>"
+    And I should see the product description for "<product_title>"
     And I should see the "Add to Cart" button
+
+  Examples:
+    | product_id | product_title |
+    | 1          | Product 1     |
+    | 2          | Product 2     |
+    | 3          | Product 3     |
 
   Scenario: "Add to Cart" button redirects user to cart
     Given I visit a product page with ID "2"
