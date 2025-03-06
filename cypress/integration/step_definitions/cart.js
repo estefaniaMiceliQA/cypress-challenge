@@ -1,12 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-
-Given('I visit the cart page', () => {
-  cy.visit('/cart');
-});
-
-Then('I should see the cart header {string}', (expectedHeader) => {
-  cy.get('h1').should('contain', expectedHeader);
-});
+import './common';
 
 Then('I should see a list of added products', () => {
   cy.get('ul').should('exist');
@@ -14,7 +7,7 @@ Then('I should see a list of added products', () => {
 });
 
 Given('I have added {string} to the cart', (productName) => {
-  cy.visit('/product/2');
+  cy.visit('/product/2'); // Product selection hardcoded due to bug
   cy.get('button').contains('Add to Cart').click();
 });
 
@@ -27,7 +20,7 @@ Then('The cart should contain {string} with quantity {string}', (expectedProduct
       cy.log(`BUG: Expected ${expectedProduct}, but found: ${cartText}`);
     }
 
-    expect(cartText).to.include(expectedProduct); // expected to fail due to the bug
+    expect(cartText).to.include(expectedProduct); // Expected to fail due to bug
     expect(cartText).to.include(`Quantity: ${expectedQuantity}`);
   });
 });
@@ -44,10 +37,6 @@ Then('I should be redirected to the checkout page', () => {
   cy.url().should('include', '/checkout');
 });
 
-Given('I visit the cart page without adding products', () => {
-  cy.visit('/cart');
-});
-
 Then('I should see a message indicating the cart is empty', () => {
   cy.get('ul li').then(($el) => {
 
@@ -56,6 +45,6 @@ Then('I should see a message indicating the cart is empty', () => {
       cy.log(`BUG: Expected empty cart, but found: ${$el.text()}`);
     }
 
-    expect($el.length).to.equal(0); // expected to fail due to the bug
+    expect($el.length).to.equal(0); // Expected to fail due to bug
   });
 });

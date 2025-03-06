@@ -2,7 +2,7 @@ Feature: Product Page
 
   Scenario: User views a product page
     Given I visit a product page with ID "1"
-    Then I should see the product title "Product 1"
+    Then I should see the header "Product 1"
     And I should see the product description
     And I should see the "Add to Cart" button
 
@@ -17,7 +17,7 @@ Feature: Product Page
 
   Scenario Outline: Product page should load with any random product ID
     Given I visit a product page with ID "<random_id>"
-    Then I should still see a product page
+    Then I should see the header "Product <random_id>"
 
   Examples:
     | random_id |
@@ -29,4 +29,4 @@ Feature: Product Page
   Scenario: Product details should persist after reload
     Given I visit a product page with ID "4"
     When I refresh the page
-    Then I should still see the product title "Product 4"
+    Then I should see the header "Product 4"

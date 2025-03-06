@@ -1,11 +1,8 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
+import './common';
 
 Given('I visit a product page with ID {string}', (productId) => {
     cy.visit(`/product/${productId}`);
-});
-
-Then('I should see the product title {string}', (expectedTitle) => {
-    cy.get('h1').should('contain', expectedTitle);
 });
 
 Then('I should see the product description', () => {
@@ -28,15 +25,6 @@ Then('The URL should match {string}', (expectedUrl) => {
     cy.url().should('include', expectedUrl);
 });
 
-Then('I should still see a product page', () => {
-    cy.get('h1').should('exist');
-    cy.get('button').should('contain', 'Add to Cart');
-});
-
 When('I refresh the page', () => {
     cy.reload();
 });
-
-Then('I should still see the product title {string}', (expectedTitle) => {
-    cy.get('h1').should('contain', expectedTitle);
-});  

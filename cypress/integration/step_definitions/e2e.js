@@ -2,10 +2,6 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import './cart';
 import './checkout';
 
-Given('I visit the home page', () => {
-  cy.visit('/');
-});
-
 When('I click on the first product', () => {
   cy.get('ul li a').first().click();
 });

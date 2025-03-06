@@ -1,7 +1,7 @@
 Feature: End-to-End Purchase Flow
 
   Scenario: User completes a full purchase
-    Given I visit the home page
+    Given I visit the "home" page
     When I click on the first product
     Then I should be on the product page
 

@@ -50,18 +50,7 @@ This document tracks bugs found during automated testing.
 
 ---
 
-## 5. "Added to Cart" Message is Unreliable
-- **Bug:** The `"Product X added to the cart!"` message disappears **too quickly** for Cypress to reliably detect.
-- **Expected:** Cypress should be able to validate the message before redirection.
-- **Steps to Reproduce:**
-  1. Add a product to the cart.
-  2. Try detecting `"Product X added to the cart!"` in the DOM.
-- **Status:** *Bug still present (assertion skipped)*
-- **Test Case:** `product.feature` → Assertion was skipped to prevent test failure.
-
----
-
-## 6. User Remains on Checkout Page After Purchase
+## 5. User Remains on Checkout Page After Purchase
 - **Bug:** After a successful purchase, the user **is not redirected** but instead sees a confirmation message.
 - **Expected:** Redirection or explicit order summary page.
 - **Steps to Reproduce:**

@@ -1,16 +1,5 @@
 import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
-
-Given('I visit the home page', () => {
-    cy.visit('/');
-});
-
-Then('I should see the page title {string}', (expectedTitle) => {
-    cy.title().should('eq', expectedTitle);
-});
-
-Then('I should see the main header {string}', (expectedHeader) => {
-    cy.get('h1').should('contain', expectedHeader);
-});
+import './common';
 
 Then('I should see a list of products', () => {
     cy.get('ul').should('exist');
@@ -29,7 +18,7 @@ Then('Each product should display a price', () => {
     });
 });
 
-Then('Each product should have a link leading to its product page', () => {
+Then('Each product should have a valid link', () => {
     cy.get('li a').each(($el) => {
         cy.wrap($el).should('have.attr', 'href').and('match', /\/product\/\d+/);
     });
@@ -45,7 +34,6 @@ Then('Each product name should not contain special characters', () => {
     });
 });
 
-
 Then('Each product should have a valid price format', () => {
     cy.get('li a').each(($el) => {
         cy.wrap($el).invoke('text').should('match', /\$\d+(\.\d{1,2})?$/);
@@ -53,12 +41,12 @@ Then('Each product should have a valid price format', () => {
 });
 
 Then('There should be no duplicate product names', () => {
-    const productNames = [];
+    const productNames = new Set();
 
     cy.get('li a').each(($el) => {
         cy.wrap($el).invoke('text').then((text) => {
             expect(productNames).not.to.include(text);
-            productNames.push(text);
+            productNames.add(text);
         });
     });
 });
