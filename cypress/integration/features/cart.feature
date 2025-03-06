@@ -19,5 +19,5 @@ Feature: Cart Page
 
   @bug The cart is never empty, it always shows "Product 1".
   Scenario: Cart should be empty if no products are added
-    Given I visit the "cart" page without adding products
+    Given I visit the "cart" page
     Then I should see a message indicating the cart is empty
