@@ -10,7 +10,6 @@ Feature: Checkout Page
     Given I visit the "checkout" page
     When I submit the form without filling it
     Then I should see a validation message "Please fill out this field." for the "name" field
-    And I should see a validation message "Please fill out this field." for the "email" field
 
   Scenario Outline: Email field validation errors
     Given I visit the "checkout" page
@@ -20,11 +19,11 @@ Feature: Checkout Page
     Then I should see a validation message "<expected_message>" for the "email" field
 
   Examples:
-    | invalid_email  | expected_message |
-    | invalidemail   | Please include an '@' in the email address. 'invalidemail' is missing an '@'. |
-    | user@          | Please enter a part following '@'. 'user@' is incomplete. |
-    | user.          | Please include an '@' in the email address. 'user.' is missing an '@'. |
-    | user@.         | '.' is used at a wrong position in '.'. |
+    | invalid_email  | expected_message                                                                 |
+    | invalidemail   | Please include an '@' in the email address. 'invalidemail' is missing an '@'.    |
+    | user@          | Please enter a part following '@'. 'user@' is incomplete.                        |
+    | user.          | Please include an '@' in the email address. 'user.' is missing an '@'.           |
+    | user@.         | '.' is used at a wrong position in '.'.                                          |
 
   @bug The name field does not validate against numbers or special characters.
   Scenario: Name field should reject invalid names

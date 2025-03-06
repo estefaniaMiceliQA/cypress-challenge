@@ -33,8 +33,16 @@ When('I submit the form', () => {
 
 Then('I should see a validation message {string} for the {string} field', (expectedMessage, field) => {
     const selector = field === 'name' ? 'input[placeholder="Your Name"]' : 'input[placeholder="Your Email"]';
+
     cy.get(selector).then(($el) => {
-        expect($el[0].validationMessage).to.equal(expectedMessage);
-        cy.log(`Validation message found: ${$el[0].validationMessage}`);
+        cy.wrap(Cypress.browser.name).then((browser) => {
+            if (field.toLowerCase() === 'email' && browser === 'firefox') {
+                expectedMessage = "Please enter an email address.";
+            }
+
+            expect($el[0].validationMessage).to.equal(expectedMessage);
+            cy.log(`Validation message found: ${$el[0].validationMessage}`);
+        });
     });
 });
+

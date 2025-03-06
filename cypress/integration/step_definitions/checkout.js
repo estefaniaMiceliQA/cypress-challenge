@@ -14,20 +14,6 @@ When('I submit the form without filling it', () => {
     cy.get('button').contains('Complete Purchase').click();
 });
 
-Then('I should see a validation message {string} for the name field', (expectedMessage) => {
-    cy.get('input[placeholder="Your Name"]').then(($el) => {
-        expect($el[0].validationMessage).to.equal(expectedMessage);
-        cy.log(`Validation message for Name field: ${$el[0].validationMessage}`);
-    });
-});
-
-Then('I should see a validation message {string} for the email field', (expectedMessage) => {
-    cy.get('input[placeholder="Your Email"]').then(($el) => {
-        expect($el[0].validationMessage).to.equal(expectedMessage);
-        cy.log(`Email validation message found: ${$el[0].validationMessage}`);
-    });
-});
-
 When('I enter name {string}', (name) => {
     cy.get('input[placeholder="Your Name"]').type(name);
 });
