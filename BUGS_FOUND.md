@@ -67,6 +67,25 @@ This document tracks bugs found during automated testing.
 
 ---
 
+## Report Generation
+
+### Issue: Initial Reports Were Unreadable (JSON Only)
+- Cypress was only generating raw `.json` files for Cucumber reports, making them difficult to read.
+
+### Fix Implemented
+- Installed `multiple-cucumber-html-reporter` and added it to `cypress.config.js`.
+- Ensured JSON reports were saved in `cypress/reports/cucumber-json/`.
+- Automatically generated an HTML report in `cypress/reports/html/index.html`.
+- Adjusted `package.json` to allow running `yarn report` to open the report easily.
+
+### Usage:
+To generate the HTML report:
+```bash
+yarn test
+yarn report
+```
+---
+
 ## **Maintainer Notes**
 - Tests are implemented in **Cypress with Cucumber (Gherkin syntax)**.
 - For more details, refer to the **`integration/features/`** folder.
