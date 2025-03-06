@@ -7,6 +7,10 @@ const pages = {
     profile: '/profile',
 };
 
+export const nameInput = () => cy.get('input[type="text"]');
+export const emailInput = () => cy.get('input[type="email"]');
+export const submitButton = () => cy.get('button[type="submit"]');
+
 Given('I visit the {string} page', (page) => {
     cy.visit(pages[page] || '/');
 });
@@ -20,21 +24,21 @@ Then('I should see the header {string}', (expectedHeader) => {
 });
 
 When('I enter name {string}', (name) => {
-    cy.get('input[placeholder="Your Name"]').clear().type(name);
+    nameInput().clear().type(name);
 });
 
 When('I enter email {string}', (email) => {
-    cy.get('input[placeholder="Your Email"]').clear().type(email);
+    emailInput().clear().type(email);
 });
 
 When('I submit the form', () => {
-    cy.get('button').contains('Complete Purchase').click();
+    submitButton().click();
 });
 
 Then('I should see a validation message {string} for the {string} field', (expectedMessage, field) => {
-    const selector = field === 'name' ? 'input[placeholder="Your Name"]' : 'input[placeholder="Your Email"]';
+    const selector = field.toLowerCase() === 'name' ? nameInput() : emailInput();
 
-    cy.get(selector).then(($el) => {
+    selector.then(($el) => {
         cy.wrap(Cypress.browser.name).then((browser) => {
             if (field.toLowerCase() === 'email' && browser === 'firefox') {
                 expectedMessage = "Please enter an email address.";

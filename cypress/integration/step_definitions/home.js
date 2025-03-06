@@ -1,5 +1,7 @@
-import { Given, Then, When } from 'cypress-cucumber-preprocessor/steps';
+import { Then, When } from 'cypress-cucumber-preprocessor/steps';
 import './common';
+
+const productLinks = () => cy.get('li a');
 
 Then('I should see a list of products', () => {
     cy.get('ul').should('exist');
@@ -7,19 +9,19 @@ Then('I should see a list of products', () => {
 });
 
 Then('Each product should display a name', () => {
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).invoke('text').should('match', /Product \d+/);
     });
 });
 
 Then('Each product should display a price', () => {
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).invoke('text').should('match', /\$\d+/);
     });
 });
 
 Then('Each product should have a valid link', () => {
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).should('have.attr', 'href').and('match', /\/product\/\d+/);
     });
 });
@@ -29,13 +31,13 @@ Then('I should see exactly {int} products listed', (expectedCount) => {
 });
 
 Then('Each product name should not contain special characters', () => {
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).invoke('text').should('match', /^Product \d+ - \$\d+(\.\d{1,2})?$/);
     });
 });
 
 Then('Each product should have a valid price format', () => {
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).invoke('text').should('match', /\$\d+(\.\d{1,2})?$/);
     });
 });
@@ -43,7 +45,7 @@ Then('Each product should have a valid price format', () => {
 Then('There should be no duplicate product names', () => {
     const productNames = new Set();
 
-    cy.get('li a').each(($el) => {
+    productLinks().each(($el) => {
         cy.wrap($el).invoke('text').then((text) => {
             expect(productNames).not.to.include(text);
             productNames.add(text);
@@ -52,7 +54,7 @@ Then('There should be no duplicate product names', () => {
 });
 
 When('I click on a product link', () => {
-    cy.get('li a').first().click();
+    productLinks().first().click();
 });
 
 Then('The product page should load successfully', () => {

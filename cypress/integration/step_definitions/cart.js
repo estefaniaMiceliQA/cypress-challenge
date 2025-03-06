@@ -1,9 +1,12 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
 import './common';
 
+const cartItems = () => cy.get('ul li');
+const proceedToCheckoutButton = () => cy.get('a').contains('Proceed to Checkout');
+
 Then('I should see a list of added products', () => {
     cy.get('ul').should('exist');
-    cy.get('ul li').should('have.length.at.least', 1);
+    cartItems().should('have.length.at.least', 1);
 });
 
 Given('I have added {string} to the cart', (productName) => {
@@ -13,7 +16,7 @@ Given('I have added {string} to the cart', (productName) => {
 });
 
 Then('The cart should contain {string} with quantity {string}', (expectedProduct, expectedQuantity) => {
-    cy.get('ul li').then(($el) => {
+    cartItems().then(($el) => {
         const cartText = $el.text();
         const expectedText = `${expectedProduct} - Quantity: ${expectedQuantity}`;
 
@@ -27,11 +30,11 @@ Then('The cart should contain {string} with quantity {string}', (expectedProduct
 });
 
 Then('I should see a "Proceed to Checkout" button', () => {
-    cy.get('a').contains('Proceed to Checkout').should('be.visible');
+    proceedToCheckoutButton().should('be.visible');
 });
 
 When('I click the "Proceed to Checkout" button', () => {
-    cy.get('a').contains('Proceed to Checkout').click();
+    proceedToCheckoutButton().click();
 });
 
 Then('I should be redirected to the checkout page', () => {
@@ -39,8 +42,7 @@ Then('I should be redirected to the checkout page', () => {
 });
 
 Then('I should see a message indicating the cart is empty', () => {
-    cy.get('ul li').then(($el) => {
-
+    cartItems().then(($el) => {
         // Bug: The cart always displays "Product 1"
         if ($el.length > 0) {
             cy.log(`BUG: Expected empty cart, but found: ${$el.text()}`);

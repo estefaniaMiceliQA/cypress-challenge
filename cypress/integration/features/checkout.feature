@@ -8,7 +8,7 @@ Feature: Checkout Page
 
   Scenario: Form should not submit with empty fields
     Given I visit the "checkout" page
-    When I submit the form without filling it
+    When I submit the form
     Then I should see a validation message "Please fill out this field." for the "name" field
 
   Scenario Outline: Email field validation errors
